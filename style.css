@@ -114,8 +114,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 2.5rem;
-
-  /* Match height and activity boxes */
   height: 9.25rem;
   transition: all 0.5s, transform 1ms;
 }
@@ -171,7 +169,6 @@ body {
   filter: drop-shadow(0px 5px 10px black);
 }
 
-/* Popup width is defined in JS using options */
 .leaflet-popup .leaflet-popup-content-wrapper {
   background-color: var(--color-dark--1);
   color: var(--color-light--2);
@@ -197,4 +194,8 @@ body {
   border: none;
   border-radius: 5px;
   border-bottom-left-radius: 45px;
+}
+
+.leaflet-container {
+  color: #000;
 }

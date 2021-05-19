@@ -15,8 +15,8 @@ class Place {
     this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} in ${
       this.city
     }
-      <br>
-      ⬆️ Above mean sea level: ${this.height}, ${this.id}`;
+    <br>
+    Above mean sea level: ${this.height}`;
   }
 }
 
@@ -77,7 +77,6 @@ class App {
     const { longitude } = position.coords;
 
     const coords = [latitude, longitude];
-    console.log(coords);
 
     this._map = L.map('map').setView(coords, this._mapZoomLevel);
 
@@ -141,23 +140,21 @@ class App {
     const { lat, lng } = this._mapEvent.latlng;
     let place;
 
-    if (type === 'mountain') {
-      if (!validInputs(city, name, height)) {
-        return alert('Complete all fields!');
-      }
+    if (!allPositive(height)) {
+      return alert('Only numbers in height input');
+    } else if (type === 'mountain') {
+      if (!validInputs(city, name, height) || !isNaN(city) || !isNaN(name))
+        return alert('Enter the correct data!');
 
       place = new Mountain([lat, lng], city, name, height);
-    }
-
-    if (type === 'other') {
-      if (!validInputs(city, name) || !allPositive())
-        return alert('Complete all fields!');
+    } else if (type === 'other') {
+      if (!validInputs(city, name) || !isNaN(city) || !isNaN(name))
+        return alert('Enter the correct data!');
 
       place = new Other([lat, lng], city, name);
     }
 
     this._places.push(place);
-    console.log(place.id);
 
     this._renderPlaceMarker(place);
 
@@ -233,7 +230,6 @@ class App {
 
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem('places'));
-    console.log(data);
 
     if (!data) return;
 
