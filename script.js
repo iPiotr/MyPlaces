@@ -16,7 +16,7 @@ class Place {
       this.city
     }
     <br>
-    Above mean sea level: ${this.height}`;
+    ${this.height} n.p.m.`;
   }
 }
 
