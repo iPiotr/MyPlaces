@@ -10,3 +10,5 @@ A app to collect your favorite mountains and places.
 ✔ Saving a place with the name of the city, the name of the place and altitude,  
 ✔ Reset button,   
 ✔ LocalStorage
+
+Online: https://ipiotr.github.io/MyPlaces/
